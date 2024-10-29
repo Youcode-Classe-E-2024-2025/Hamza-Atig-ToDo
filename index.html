@@ -8,35 +8,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>TaskFlow</title>
 </head>
-<body>
-    <div class="container w-full h-full mx-auto font-jura flex flex-col ">
-        <div>
-            <div id="add-multi">
-
+<body class="bg-black">
+    <div class="container w-full h-full mx-auto font-jura flex flex-col text-white mt-6">
+            <div class="flex flex-row justify-evenly">
+                <div id="add-multi" class="bg-blue-500 pr-3 pl-3 rounded flex">
+                    <button class="align-middle">+ Add Multi</button>
+                </div>
+                <div id="search" class="bg-white rounded-sm">
+                    <input type="search" placeholder="Search" class="rounded-sm text-black outline-none px-4 border-none">
+                    <button class="m-2 rounded-sm bg-blue-500 text-white pr-2 pl-2">Search</button>
+                </div>
+                <div id="add" class="bg-blue-500 pr-3 pl-3 rounded flex">
+                    <button class="align-middle">+ Add One</button>
+                </div>
             </div>
-            <div id="">
-
-            </div>
-            <div id="add-multi">
-
-            </div>
-        </div>
-        <div class="flex flex-wrap justify-around flex-row">
-            <div>
-                <h2>In progress</h2>
-                <div>
+        <div class="flex flex-wrap justify-around flex-row mt-12">
+            <div class="To-Do border border-gray-400 bg-gray-400 rounded-xl w-1/4 flex flex-col">
+                <h2 class="text-center">To Do</h2>
+                <div id="to-do">
+                    <p class="text-center bg-orange-500 mt-1 mb-1 rounded-md cursor-move border border-orange-500" draggable="true">Play Games</p>
+                    <p class="text-center bg-yellow-500 mt-1 mb-2 rounded-md cursor-move border border-yellow-500" draggable="true">Play Games</p>
+                </div>
+            </div >
+            <div class="Doing border border-gray-400 bg-gray-400 rounded-xl w-1/4 flex flex-col">
+                <h2 class="text-center">Doing</h2>
+                <div id="doing">
     
                 </div>
             </div>
-            <div>
-                <h2>Doing</h2>
-                <div>
-    
-                </div>
-            </div>
-            <div>
-                <h2>Done</h2>
-                <div>
+            <div class="Done border border-gray-400 bg-gray-400 rounded-xl w-1/4 flex flex-col">
+                <h2 class="text-center">Done</h2>
+                <div id="done">
     
                 </div>
             </div>
