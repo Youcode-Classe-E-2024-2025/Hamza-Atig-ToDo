@@ -8,41 +8,59 @@
     <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>TaskFlow</title>
 </head>
+
 <body class="bg-black">
     <div class="container w-full h-full mx-auto font-jura flex flex-col text-white mt-6">
-            <div class="flex flex-row justify-evenly">
-                <div id="add-multi" class="bg-blue-500 pr-3 pl-3 rounded flex">
-                    <button class="align-middle">+ Add Multi</button>
-                </div>
-                <div id="search" class="bg-white rounded-sm">
-                    <input type="search" placeholder="Search" class="rounded-sm text-black outline-none px-4 border-none">
-                    <button class="m-2 rounded-sm bg-blue-500 text-white pr-2 pl-2">Search</button>
-                </div>
-                <div id="add" class="bg-blue-500 pr-3 pl-3 rounded flex">
-                    <button class="align-middle">+ Add One</button>
-                </div>
+        <div class="flex flex-row justify-evenly">
+            <div id="add-multi" class="bg-blue-500 pr-3 pl-3 rounded flex">
+                <button class="align-middle">+ Add Multi</button>
             </div>
-        <div class="flex flex-wrap justify-around flex-row mt-12">
-            <div class="To-Do border border-gray-400 bg-gray-400 rounded-xl w-1/4 flex flex-col">
-                <h2 class="text-center">To Do</h2>
+            <div id="search" class="bg-white rounded-sm">
+                <input type="search" placeholder="Search" class="rounded-sm text-black outline-none px-4 border-none">
+                <button class="m-2 rounded-sm bg-blue-500 text-white pr-2 pl-2">Search</button>
+            </div>
+            <div id="add" class="bg-blue-500 pr-3 pl-3 rounded flex">
+                <button class="align-middle" onclick="openModal()">+ Add One</button>
+            </div>
+        </div>
+        <div class="flex justify-around mt-12 ">
+            <div class="To-Do border border-blue-400 bg-blue-400 rounded-xl w-1/4 flex flex-col align-middle items-center">
+                <h2 class="text-center mb-3">To Do</h2>
                 <div id="to-do">
-                    <p class="text-center bg-orange-500 mt-1 mb-1 rounded-md cursor-move border border-orange-500" draggable="true">Play Games</p>
-                    <p class="text-center bg-yellow-500 mt-1 mb-2 rounded-md cursor-move border border-yellow-500" draggable="true">Play Games</p>
-                </div>
-            </div >
-            <div class="Doing border border-gray-400 bg-gray-400 rounded-xl w-1/4 flex flex-col">
-                <h2 class="text-center">Doing</h2>
-                <div id="doing">
-    
+
                 </div>
             </div>
-            <div class="Done border border-gray-400 bg-gray-400 rounded-xl w-1/4 flex flex-col">
-                <h2 class="text-center">Done</h2>
+            <div class="Doing border border-blue-400 bg-blue-400 rounded-xl w-1/4 flex flex-col align-middle items-center">
+                <h2 class="text-center mb-3">Doing</h2>
+                <div id="doing">
+
+                </div>
+            </div>
+            <div class="Done border border-blue-400 bg-blue-400 rounded-xl w-1/4 flex flex-col align-middle items-center">
+                <h2 class="text-center mb-3">Done</h2>
                 <div id="done">
-    
+
                 </div>
             </div>
         </div>
+        <div class="fixed inset-0 flex justify-center items-center opacity-0 translate-y-full transition-all duration-500 ease-in-out" id="modal">
+            <div class="modal flex justify-center flex-col bg-white w-2/4 h-2/3 p-8 gap-4 rounded-lg">
+                <input type="text" placeholder="Title" id="title"
+                    class="border text-center h-8 text-black border-gray-400 rounded-md text-wrap">
+                <input type="text" placeholder="Description" id="description"
+                    class="text-center h-8 text-black border border-gray-400 rounded-md">
+                <input type="datetime-local" id="date" class="text-black">
+                <select name="Priority" placeholder="Priority" id="Priority" class="text-black">
+                    <option value="p1">P1</option>
+                    <option value="p2">P2</option>
+                    <option value="p3">P3</option>
+                </select>
+                <button class="bg-blue-500 text-white rounded-md h-8" onclick="addtask()">Add</button>
+                <button class="bg-blue-500 text-white rounded-md h-8" onclick="closeModal()">close</button>
+            </div>
+        </div>
     </div>
+    <script src="javascript/script.js"></script>
 </body>
+
 </html>
