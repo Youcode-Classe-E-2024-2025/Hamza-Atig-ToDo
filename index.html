@@ -13,7 +13,7 @@
     <div class="container w-full h-full mx-auto font-jura flex flex-col text-white mt-6">
         <div class="flex flex-row justify-evenly" id="blur-1">
             <div id="add-multi" class="bg-blue-500 pr-3 pl-3 rounded flex">
-                <button class="align-middle">+ Add Multi</button>
+                <button class="align-middle" onclick="openMuli()">+ Add Multi</button>
             </div>
             <div id="search" class="bg-white rounded-sm">
                 <input type="search" placeholder="Search" class="rounded-sm text-black outline-none px-4 border-none">
@@ -25,7 +25,7 @@
         </div>
         <div class="flex justify-around mt-12 max-xl:flex-col max-xl:items-center max-xl:gap-14" id="blur-2">
             <div
-                class="To-Do border border-blue-400 bg-blue-400 rounded-xl w-1/4 flex flex-col items-center max-xl:w-1/2">
+                class="To-Do border border-blue-400 bg-blue-400 rounded-xl w-1/4 flex flex-col items-center max-xl:w-1/2 max-w-1/2">
                 <h2 class="text-center mb-3">To Do</h2>
                 <div id="to-do">
 
@@ -39,7 +39,8 @@
                 </div>
             </div>
             <div
-                class="Done border border-blue-400 bg-blue-400 rounded-xl w-1/4 flex flex-col align-middle items-center max-xl:w-1/2">
+                class="
+                Done border border-blue-400 bg-blue-400 rounded-xl w-1/4 flex flex-col align-middle items-center max-xl:w-1/2">
                 <h2 class="text-center mb-3">Done</h2>
                 <div id="done">
 
@@ -65,6 +66,28 @@
                 <div class="flex flex-row gap-3">
                     <button class="bg-blue-500 text-white rounded-md h-8 w-1/2" onclick="addtask()">Add</button>
                     <button class="bg-red-500 text-white rounded-md h-8 w-1/2" onclick="closeModal()">close</button>
+                </div>
+            </div>
+        </div>
+        <div class="fixed inset-0 flex justify-center items-center opacity-0 translate-y-full transition-all duration-500 ease-in-out"
+            id="Multi">
+            <div class="modal flex justify-center flex-col bg-white w-2/4  p-8 gap-5 rounded-lg">
+                <input type="text" placeholder="Title" id="title1"
+                    class="border text-center h-8 text-black border-gray-400 rounded-md text-wrap">
+                <input type="text" placeholder="Description" id="description1"
+                    class="text-center h-8 text-black border border-gray-400 rounded-md">
+                <input type="datetime-local" id="date1"
+                    class="text-black border border-gray-400 rounded-md text-center h-8"
+                    required>
+                <select name="Priority" placeholder="Priority" id="Priority1"
+                    class="text-black border border-gray-400 rounded-md h-8 text-center" required>
+                    <option value="p1">P1</option>
+                    <option value="p2">P2</option>
+                    <option value="p3">P3</option>
+                </select>
+                <div class="flex flex-row gap-3">
+                    <button class="bg-blue-500 text-white rounded-md h-8 w-1/2" onclick="addMulti()">Add</button>
+                    <button class="bg-red-500 text-white rounded-md h-8 w-1/2" onclick="closeMulti()">close</button>
                 </div>
             </div>
         </div>

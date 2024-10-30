@@ -2,6 +2,8 @@ let modal = document.querySelector("#modal");
 let blur = document.querySelector("#blur-1");
 let blur2 = document.querySelector("#blur-2");
 const dateInput = document.querySelector("#date");
+const dateInput1 = document.querySelector("#date1");
+let multi = document.querySelector("#Multi");
 let currentTask = null;
 
 function openModal() {
@@ -29,6 +31,8 @@ function addtask() {
         alert("Please select a date.");
     } else if (new Date(dateInput.value) <= new Date()) {
         alert("Please enter a valid future date.");
+    } else if (document.querySelector("#Priority").value == "") {
+        alert("Please select a priority.");
     }
 
     else {
@@ -38,7 +42,7 @@ function addtask() {
         let priority = document.querySelector("#Priority").value;
 
         let task = document.createElement("div");
-        task.className = "w-8/1 text-center font-bold rounded-md text-white p-4 mb-4 cursor-move";
+        task.className = "w-8/1 pr-4 pl- text-center font-bold rounded-md text-white p-4 mb-4 cursor-move";
         task.setAttribute("draggable", "true");
 
         if (priority === "p1") {
@@ -51,7 +55,7 @@ function addtask() {
 
         task.innerHTML = `
             <h2 class="text-lg">${title}</h2>
-            <p class="text-xs text-gray-300">${description}</p>
+            <p class="text-xs text-gray-300 ">${description}</p>
             <p class="text-xs text-gray-300">${date}</p>
             <div class="flex justify-center space-x-2 mt-2">
                 <button class="bg-red-600 text-white rounded-md px-4 py-1" onclick="this.parentElement.parentElement.remove()">Delete</button>
@@ -104,4 +108,89 @@ function editTask(button) {
         currentTask.classList.contains("bg-yellow-500") ? "p2" : "p3";
 
     openModal();
+}
+
+
+
+function openMuli() {
+    multi.classList.remove("opacity-0", "translate-y-full");
+    multi.classList.add("opacity-100", "translate-y-0");
+    blur.classList.add("blur-xl");
+    blur2.classList.add("blur-xl");
+}
+
+function closeMulti() {
+    multi.classList.add("opacity-0", "translate-y-full");
+    multi.classList.remove("opacity-100", "translate-y-0");
+    blur.classList.remove("blur-xl");
+    blur2.classList.remove("blur-xl");
+
+    currentTask = null;
+}
+
+function addMulti() {
+    const title1 = document.querySelector("#title1").value;
+    const description1 = document.querySelector("#description1").value;
+    const date1 = document.querySelector("#date1").value;
+    const priority1 = document.querySelector("#Priority1").value;
+
+    if (!title1) {
+        alert("Please enter a title");
+        return;
+    }
+
+    if (!description1) {
+        alert("Please enter a description");
+        return;
+    }
+
+    if (!date1) {
+        alert("Please select a date.");
+        return;
+    }
+
+    if (new Date(date1) <= new Date()) {
+        alert("Please enter a valid future date.");
+        return;
+    }
+
+    if (!priority1) {
+        alert("Please select a priority.");
+    }
+
+    else {
+        const task1 = document.createElement("div");
+        task1.className = "w-8/1 text-center font-bold rounded-md text-white p-4 mb-4 cursor-move";
+        task1.setAttribute("draggable", "true");
+
+        if (priority1 === "p1") {
+            task1.classList.add("border", "bg-red-500");
+        } else if (priority1 === "p2") {
+            task1.classList.add("border", "bg-yellow-500");
+        } else if (priority1 === "p3") {
+            task1.classList.add("border", "bg-green-500");
+        }
+
+        task1.innerHTML = `
+            <h2 class="text-lg">${title1}</h2>
+            <p class="text-xs text-gray-300">${description1}</p>
+            <p class="text-xs text-gray-300">${date1}</p>
+            <div class="flex justify-center space-x-2 mt-2">
+                <button class="bg-red-600 text-white rounded-md px-4 py-1" onclick="this.parentElement.parentElement.remove()">Delete</button>
+                <button class="bg-blue-500 text-white rounded-md px-4 py-1" onclick="editTask(this)">Edit</button>
+            </div>
+        `;
+        task1.addEventListener("dragstart", () => task1.classList.add("opacity-50"));
+        task1.addEventListener("dragend", () => task1.classList.remove("opacity-50"));
+
+        if (currentTask) {
+            currentTask.replaceWith(task1);
+        } else {
+            document.querySelector("#to-do").appendChild(task1);
+        }
+        document.querySelector("#title1").value = "";
+        document.querySelector("#description1").value = "";
+        document.querySelector("#date1").value = "";
+        document.querySelector("#Priority1").value = "";
+    }
 }
