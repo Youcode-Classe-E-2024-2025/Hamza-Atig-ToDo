@@ -10,8 +10,8 @@
 </head>
 
 <body class="bg-black">
-    <div class="container w-full h-full mx-auto font-jura flex flex-col text-white mt-6">
-        <div class="flex flex-row justify-evenly">
+    <div class="container w-full h-full mx-auto font-jura flex flex-col text-white mt-6" >
+        <div class="flex flex-row justify-evenly" id="blur-1">
             <div id="add-multi" class="bg-blue-500 pr-3 pl-3 rounded flex">
                 <button class="align-middle">+ Add Multi</button>
             </div>
@@ -23,20 +23,20 @@
                 <button class="align-middle" onclick="openModal()">+ Add One</button>
             </div>
         </div>
-        <div class="flex justify-around mt-12 ">
-            <div class="To-Do border border-blue-400 bg-blue-400 rounded-xl w-1/4 flex flex-col align-middle items-center">
+        <div class="flex justify-around mt-12 max-xl:flex-col max-xl:items-center max-xl:gap-14" id="blur-2">
+            <div class="To-Do border border-blue-400 bg-blue-400 rounded-xl w-1/4 flex flex-col items-center max-xl:w-1/2">
                 <h2 class="text-center mb-3">To Do</h2>
                 <div id="to-do">
 
                 </div>
             </div>
-            <div class="Doing border border-blue-400 bg-blue-400 rounded-xl w-1/4 flex flex-col align-middle items-center">
+            <div class="Doing border border-blue-400 bg-blue-400 rounded-xl w-1/4 flex flex-col align-middle items-center max-xl:w-1/2">
                 <h2 class="text-center mb-3">Doing</h2>
                 <div id="doing">
 
                 </div>
             </div>
-            <div class="Done border border-blue-400 bg-blue-400 rounded-xl w-1/4 flex flex-col align-middle items-center">
+            <div class="Done border border-blue-400 bg-blue-400 rounded-xl w-1/4 flex flex-col align-middle items-center max-xl:w-1/2">
                 <h2 class="text-center mb-3">Done</h2>
                 <div id="done">
 

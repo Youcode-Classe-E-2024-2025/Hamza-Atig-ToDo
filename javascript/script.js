@@ -1,12 +1,19 @@
 let modal = document.querySelector("#modal");
+let blur = document.querySelector("#blur-1");
+let blur2 = document.querySelector("#blur-2");
 
 function openModal() {
     modal.classList.remove("opacity-0", "translate-y-full");
     modal.classList.add("opacity-100", "translate-y-0");
+    blur.classList.add("blur-xl");
+    blur2.classList.add("blur-xl");
 }
 
 function closeModal() {
-    modal.classList.add("invisible");
+    modal.classList.add("opacity-0", "translate-y-full");
+    modal.classList.remove("opacity-100", "translate-y-0");
+    blur.classList.remove("blur-xl");
+    blur2.classList.remove("blur-xl");
 }
 
 function addtask() {
@@ -23,7 +30,7 @@ function addtask() {
         let priority = document.querySelector("#Priority").value;
 
         let task = document.createElement("div");
-        task.className = "w-8/1 text-center font-bold rounded-md text-white p-4 mb-4";
+        task.className = "w-8/1 text-center font-bold rounded-md text-white p-4 mb-4 cursor-move";
         task.setAttribute("draggable", "true");
 
         if (priority === "p1") {
@@ -53,7 +60,9 @@ function addtask() {
         document.querySelector("#description").value = "";
         document.querySelector("#date").value = "";
         document.querySelector("#Priority").value = "";
+
         closeModal();
+        
     }
 }
 
