@@ -10,17 +10,20 @@
 </head>
 
 <body class="bg-black">
-    <div class="container w-full h-full mx-auto font-jura flex flex-col text-white mt-6">
+    <div id="blur-3" class="w-full flex justify-center mt-11">
+        <h1 class="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent text-8xl font-jura">TaskFlow</h1>
+    </div>
+    <div class="container w-full h-full mx-auto font-jura flex flex-col text-white mt-10">
         <div class="flex flex-row justify-evenly" id="blur-1">
-            <div id="add-multi" class="bg-blue-500 pr-3 pl-3 rounded flex">
-                <button class="align-middle" onclick="openMuli()">+ Add Multi</button>
+            <div id="add-multi" class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
+                <button class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0" onclick="openMuli()">+ Add Multi</button>
             </div>
             <div id="search" class="bg-white rounded-sm">
                 <input type="search" placeholder="Search" class="rounded-sm text-black outline-none px-4 border-none">
                 <button class="m-2 rounded-sm bg-blue-500 text-white pr-2 pl-2">Search</button>
             </div>
-            <div id="add" class="bg-blue-500 pr-3 pl-3 rounded flex">
-                <button class="align-middle" onclick="openModal()">+ Add One</button>
+            <div id="add" class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
+                <button class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0" onclick="openModal()">+ Add One</button>
             </div>
         </div>
         <div class="flex justify-around mt-12 max-xl:flex-col max-xl:items-center max-xl:gap-14" id="blur-2">

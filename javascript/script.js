@@ -1,16 +1,19 @@
 let modal = document.querySelector("#modal");
 let blur = document.querySelector("#blur-1");
 let blur2 = document.querySelector("#blur-2");
+let blur3 = document.querySelector("#blur-3")
 const dateInput = document.querySelector("#date");
 const dateInput1 = document.querySelector("#date1");
 let multi = document.querySelector("#Multi");
 let currentTask = null;
+
 
 function openModal() {
     modal.classList.remove("opacity-0", "translate-y-full");
     modal.classList.add("opacity-100", "translate-y-0");
     blur.classList.add("blur-xl");
     blur2.classList.add("blur-xl");
+    blur3.classList.add("blur-xl");
 }
 
 function closeModal() {
@@ -18,6 +21,7 @@ function closeModal() {
     modal.classList.remove("opacity-100", "translate-y-0");
     blur.classList.remove("blur-xl");
     blur2.classList.remove("blur-xl");
+    blur3.classList.remove("blur-xl");
 
     currentTask = null;
 }
@@ -117,6 +121,7 @@ function openMuli() {
     multi.classList.add("opacity-100", "translate-y-0");
     blur.classList.add("blur-xl");
     blur2.classList.add("blur-xl");
+    blur3.classList.add("blur-xl");
 }
 
 function closeMulti() {
@@ -124,6 +129,7 @@ function closeMulti() {
     multi.classList.remove("opacity-100", "translate-y-0");
     blur.classList.remove("blur-xl");
     blur2.classList.remove("blur-xl");
+    blur3.classList.remove("blur-xl");
 
     currentTask = null;
 }
