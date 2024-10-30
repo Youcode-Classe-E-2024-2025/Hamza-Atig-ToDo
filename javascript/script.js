@@ -1,6 +1,8 @@
 let modal = document.querySelector("#modal");
 let blur = document.querySelector("#blur-1");
 let blur2 = document.querySelector("#blur-2");
+const dateInput = document.querySelector("#date");
+let currentTask = null;
 
 function openModal() {
     modal.classList.remove("opacity-0", "translate-y-full");
@@ -14,6 +16,8 @@ function closeModal() {
     modal.classList.remove("opacity-100", "translate-y-0");
     blur.classList.remove("blur-xl");
     blur2.classList.remove("blur-xl");
+
+    currentTask = null;
 }
 
 function addtask() {
@@ -21,9 +25,13 @@ function addtask() {
         alert("Please enter a title");
     } else if (document.querySelector("#description").value == "") {
         alert("Please enter a description");
-    } else if (new Date(document.querySelector("#date").value) <= new Date()) {
-        alert("Please enter a valid future date");
-    } else {
+    } else if (!dateInput.value) {
+        alert("Please select a date.");
+    } else if (new Date(dateInput.value) <= new Date()) {
+        alert("Please enter a valid future date.");
+    }
+
+    else {
         let title = document.querySelector("#title").value;
         let description = document.querySelector("#description").value;
         let date = document.querySelector("#date").value;
@@ -54,7 +62,11 @@ function addtask() {
         task.addEventListener("dragstart", () => task.classList.add("opacity-50"));
         task.addEventListener("dragend", () => task.classList.remove("opacity-50"));
 
-        document.querySelector("#to-do").appendChild(task);
+        if (currentTask) {
+            currentTask.replaceWith(task);
+        } else {
+            document.querySelector("#to-do").appendChild(task);
+        }
 
         document.querySelector("#title").value = "";
         document.querySelector("#description").value = "";
@@ -62,7 +74,7 @@ function addtask() {
         document.querySelector("#Priority").value = "";
 
         closeModal();
-        
+
     }
 }
 
@@ -79,5 +91,17 @@ sections.forEach(section => {
 });
 
 function editTask(button) {
-    alert('men ba3d');
+    currentTask = button.parentElement.parentElement;
+
+    const title = currentTask.querySelector("h2").innerText;
+    const description = currentTask.querySelector("p").innerText;
+    const date = currentTask.querySelectorAll("p")[1].innerText;
+
+    document.querySelector("#title").value = title;
+    document.querySelector("#description").value = description;
+    document.querySelector("#date").value = date;
+    document.querySelector("#Priority").value = currentTask.classList.contains("bg-red-500") ? "p1" :
+        currentTask.classList.contains("bg-yellow-500") ? "p2" : "p3";
+
+    openModal();
 }
