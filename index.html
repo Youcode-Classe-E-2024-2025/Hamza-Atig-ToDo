@@ -9,30 +9,50 @@
     <title>TaskFlow</title>
 </head>
 
-<body class="bg-black">
+<body class="bg-white">
     <div id="blur-3" class="w-full flex justify-center mt-11">
-        <h1 class="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent text-8xl font-jura">TaskFlow</h1>
+        <h1 class="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent text-8xl font-jura">
+            TaskFlow</h1>
     </div>
     <div class="container w-full h-full mx-auto font-jura flex flex-col text-white mt-10">
         <div class="flex flex-row justify-evenly" id="blur-1">
-            <div id="add-multi" class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
-                <button class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0" onclick="openMuli()">+ Add Multi</button>
+            <div id="add-multi"
+                class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-black focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
+                <button
+                    class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-white rounded-md group-hover:bg-opacity-0"
+                    onclick="openMuli()">+ Add Multi</button>
             </div>
             <div class="flex rounded-md border-2 border-blue-500 overflow-hidden font-[sans-serif]">
                 <input type="search" placeholder="Search Something..."
-                  class="w-full outline-none bg-white text-gray-600 text-sm px-4 py-3" id="searchInput"/>
-                <button type='button' class="flex items-center justify-center bg-[#007bff] px-5" id="searchButton" onclick="searchTasks()">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192.904 192.904" width="16px" class="fill-white">
-                    <path
-                      d="m190.707 180.101-47.078-47.077c11.702-14.072 18.752-32.142 18.752-51.831C162.381 36.423 125.959 0 81.191 0 36.422 0 0 36.423 0 81.193c0 44.767 36.422 81.187 81.191 81.187 19.688 0 37.759-7.049 51.831-18.751l47.079 47.078a7.474 7.474 0 0 0 5.303 2.197 7.498 7.498 0 0 0 5.303-12.803zM15 81.193C15 44.694 44.693 15 81.191 15c36.497 0 66.189 29.694 66.189 66.193 0 36.496-29.692 66.187-66.189 66.187C44.693 147.38 15 117.689 15 81.193z">
-                    </path>
-                  </svg>
+                    class="w-full outline-none bg-white text-gray-600 text-sm px-4 py-3" id="searchInput" />
+                <button type='button' class="flex items-center justify-center bg-[#007bff] px-5" id="searchButton"
+                    onclick="searchTasks()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192.904 192.904" width="16px"
+                        class="fill-white">
+                        <path
+                            d="m190.707 180.101-47.078-47.077c11.702-14.072 18.752-32.142 18.752-51.831C162.381 36.423 125.959 0 81.191 0 36.422 0 0 36.423 0 81.193c0 44.767 36.422 81.187 81.191 81.187 19.688 0 37.759-7.049 51.831-18.751l47.079 47.078a7.474 7.474 0 0 0 5.303 2.197 7.498 7.498 0 0 0 5.303-12.803zM15 81.193C15 44.694 44.693 15 81.191 15c36.497 0 66.189 29.694 66.189 66.193 0 36.496-29.692 66.187-66.189 66.187C44.693 147.38 15 117.689 15 81.193z">
+                        </path>
+                    </svg>
                 </button>
             </div>
-            <div id="add" class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
-                <button class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0" onclick="openModal()">+ Add One</button>
+            <div id="add"
+                class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-black focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
+                <button
+                    class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-white rounded-md group-hover:bg-opacity-0"
+                    onclick="openModal()">+ Add One</button>
             </div>
         </div>
+        <form class="max-w-sm mx-auto">
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sort Tasks</label>
+            <select id="sort"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option selected>Default Sort</option>
+                <option value="Date">Date Ascending</option>
+                <option value="Datereverse">Date Descending</option>
+                <option value="Priority">Priority Ascending</option>
+                <option value="Priorityreverse">Priority Descending</option>
+            </select>
+        </form>
         <div class="flex justify-around mt-12 max-xl:flex-col max-xl:items-center max-xl:gap-14" id="blur-2">
             <div
                 class="To-Do border border-blue-400 bg-blue-400 rounded-xl w-1/4 flex flex-col items-center max-xl:w-1/2 max-w-1/2">
@@ -65,8 +85,7 @@
                 <input type="text" placeholder="Description" id="description"
                     class="text-center h-8 text-black border border-gray-400 rounded-md">
                 <input type="datetime-local" id="date"
-                    class="text-black border border-gray-400 rounded-md text-center h-8"
-                    required>
+                    class="text-black border border-gray-400 rounded-md text-center h-8" required>
                 <select name="Priority" placeholder="Priority" id="Priority"
                     class="text-black border border-gray-400 rounded-md h-8 text-center" required>
                     <option value="p1">P1</option>
@@ -87,8 +106,7 @@
                 <input type="text" placeholder="Description" id="description1"
                     class="text-center h-8 text-black border border-gray-400 rounded-md">
                 <input type="datetime-local" id="date1"
-                    class="text-black border border-gray-400 rounded-md text-center h-8"
-                    required>
+                    class="text-black border border-gray-400 rounded-md text-center h-8" required>
                 <select name="Priority" placeholder="Priority" id="Priority1"
                     class="text-black border border-gray-400 rounded-md h-8 text-center" required>
                     <option value="p1">P1</option>
