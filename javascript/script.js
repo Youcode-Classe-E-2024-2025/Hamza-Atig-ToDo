@@ -46,7 +46,7 @@ function addtask() {
         let priority = document.querySelector("#Priority").value;
 
         let task = document.createElement("div");
-        task.className = "w-8/1 pr-4 pl- text-center font-bold rounded-md text-white p-4 mb-4 cursor-move";
+        task.className = "task w-8/1 pr-4 pl- text-center font-bold rounded-md text-white p-4 mb-4 cursor-move";
         task.setAttribute("draggable", "true");
 
         if (priority === "p1") {
@@ -59,7 +59,7 @@ function addtask() {
 
         task.innerHTML = `
             <h2 class="text-lg">${title}</h2>
-            <p class="text-xs text-gray-300 ">${description}</p>
+            <p class="text-xs text-gray-300" maxlength="10">${description}</p>
             <p class="text-xs text-gray-300">${date}</p>
             <div class="flex justify-center space-x-2 mt-2">
                 <button class="bg-red-600 text-white rounded-md px-4 py-1" onclick="this.parentElement.parentElement.remove()">Delete</button>
@@ -166,7 +166,7 @@ function addMulti() {
 
     else {
         const task1 = document.createElement("div");
-        task1.className = "w-8/1 text-center font-bold rounded-md text-white p-4 mb-4 cursor-move";
+        task1.className = "task w-8/1 text-center font-bold rounded-md text-white p-4 mb-4 cursor-move";
         task1.setAttribute("draggable", "true");
 
         if (priority1 === "p1") {
@@ -179,7 +179,7 @@ function addMulti() {
 
         task1.innerHTML = `
             <h2 class="text-lg">${title1}</h2>
-            <p class="text-xs text-gray-300">${description1}</p>
+            <p class="text-xs text-gray-300" maxlength="10">${description1}</p>
             <p class="text-xs text-gray-300">${date1}</p>
             <div class="flex justify-center space-x-2 mt-2">
                 <button class="bg-red-600 text-white rounded-md px-4 py-1" onclick="this.parentElement.parentElement.remove()">Delete</button>
@@ -198,5 +198,30 @@ function addMulti() {
         document.querySelector("#description1").value = "";
         document.querySelector("#date1").value = "";
         document.querySelector("#Priority1").value = "";
+    }
+}
+
+
+function searchTasks() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const tasks = document.querySelectorAll('.task');
+    let found = false;
+
+    tasks.forEach(task => {
+        task.classList.remove("bg-opacity-10", "border-red-500", "border-yellow-500", "border-green-500");
+
+        if (searchTerm === "" || task.textContent.toLowerCase().includes(searchTerm)) {
+            task.classList.remove('hidden');
+            if (searchTerm) {
+                task.classList.add("bg-opacity-10");
+            }
+            found = true;
+        } else {
+            task.classList.add('hidden');
+        }
+    });
+
+    if (!found && searchTerm !== "") {
+        alert('No task found with title "' + searchTerm + '"');
     }
 }
