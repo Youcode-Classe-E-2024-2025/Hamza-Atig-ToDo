@@ -6,6 +6,7 @@ const dateInput = document.querySelector("#date");
 const dateInput1 = document.querySelector("#date1");
 let multi = document.querySelector("#Multi");
 let currentTask = null;
+let totalTasks = 0;
 
 
 function openModal() {
@@ -14,6 +15,8 @@ function openModal() {
     blur.classList.add("blur-xl");
     blur2.classList.add("blur-xl");
     blur3.classList.add("blur-xl");
+
+    
 }
 
 function closeModal() {
@@ -67,6 +70,9 @@ function addtask() {
             </div>
         `;
 
+        totalTasks++;
+        console.log(totalTasks);
+
         task.addEventListener("dragstart", () => task.classList.add("opacity-50"));
         task.addEventListener("dragend", () => task.classList.remove("opacity-50"));
 
@@ -81,7 +87,12 @@ function addtask() {
         document.querySelector("#date").value = "";
         document.querySelector("#Priority").value = "";
 
+        document.getElementById("totalTasks").innerHTML = `
+            <p class="text-center text-black text-[16px] font-bold">Total Tasks: <span class="text-[20px]" id="totalTasksNumber">${totalTasks}</span></p>
+        `;
+
         closeModal();
+
 
     }
 }
@@ -189,6 +200,9 @@ function addMulti() {
         task1.addEventListener("dragstart", () => task1.classList.add("opacity-50"));
         task1.addEventListener("dragend", () => task1.classList.remove("opacity-50"));
 
+        totalTasks++;
+        console.log(totalTasks);
+
         if (currentTask) {
             currentTask.replaceWith(task1);
         } else {
@@ -198,6 +212,14 @@ function addMulti() {
         document.querySelector("#description1").value = "";
         document.querySelector("#date1").value = "";
         document.querySelector("#Priority1").value = "";
+
+
+        document.getElementById("totalTasks").innerHTML = `
+            <p class="text-center text-black text-[16px] font-bold">Total Tasks: <span class="text-[20px]" id="totalTasksNumber">${totalTasks}</span></p>
+        `;
+
+        
+        
     }
 }
 
@@ -290,6 +312,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 <button class="bg-red-600 text-white rounded-md px-4 py-1" onclick="this.parentElement.parentElement.remove()">Delete</button>
                 <button class="bg-blue-500 text-white rounded-md px-4 py-1" onclick="editTask(this)">Edit</button>
             </div>
+        `;
+
+        totalTasks++;
+
+        document.getElementById("totalTasks").innerHTML = `
+            <p class="text-center text-black text-[16px] font-bold">Total Tasks: <span class="text-[20px]" id="totalTasksNumber">${totalTasks}</span></p>
         `;
 
         task.addEventListener("dragstart", () => task.classList.add("opacity-50"));

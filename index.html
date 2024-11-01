@@ -15,14 +15,14 @@
             TaskFlow</h1>
     </div>
     <div class="container w-full h-full mx-auto font-jura flex flex-col text-white mt-10">
-        <div class="flex flex-row justify-evenly" id="blur-1">
+        <div class="flex flex-row justify-evenly max-sm:flex-col max-sm:items-center" id="blur-1">
             <div id="add-multi"
                 class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-black focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
                 <button
                     class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-white rounded-md group-hover:bg-opacity-0"
                     onclick="openMuli()">+ Add Multi</button>
             </div>
-            <div class="flex rounded-md border-2 border-blue-500 overflow-hidden font-[sans-serif]">
+            <div class="flex rounded-md border-2 border-blue-500 overflow-hidden font-jura mb-2">
                 <input type="search" placeholder="Search Something..."
                     class="w-full outline-none bg-white text-gray-600 text-sm px-4 py-3" id="searchInput" />
                 <button type='button' class="flex items-center justify-center bg-[#007bff] px-5" id="searchButton"
@@ -42,8 +42,10 @@
                     onclick="openModal()">+ Add One</button>
             </div>
         </div>
-        <form class="max-w-sm mx-auto">
-            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sort Tasks</label>
+        <div id="totalTasks">
+
+        </div>
+        <form class="max-w-sm mx-auto mt-9">
             <select id="sort"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option selected>Default Sort</option>
@@ -53,17 +55,23 @@
                 <option value="Priorityreverse">Priority Descending</option>
             </select>
         </form>
-        <div class="flex justify-around mt-12 max-xl:flex-col max-xl:items-center max-xl:gap-14" id="blur-2">
+
+        <div id="totalTasks">
+            
+        </div>
+
+        <div class="flex justify-around mt-12 max-xl:flex-col max-xl:items-center max-xl:gap-14 items-start"
+            id="blur-2">
             <div
                 class="To-Do border border-blue-400 bg-blue-400 rounded-xl w-1/4 flex flex-col items-center max-xl:w-1/2 max-w-1/2">
-                <h2 class="text-center mb-3">To Do</h2>
+                <h2 class="text-center mb-3 text-[30px]">To Do</h2>
                 <div id="to-do">
 
                 </div>
             </div>
             <div
                 class="Doing border border-blue-400 bg-blue-400 rounded-xl w-1/4 flex flex-col align-middle items-center max-xl:w-1/2">
-                <h2 class="text-center mb-3">Doing</h2>
+                <h2 class="text-center mb-3 text-[30px]">Doing</h2>
                 <div id="doing">
 
                 </div>
@@ -71,7 +79,7 @@
             <div
                 class="
                 Done border border-blue-400 bg-blue-400 rounded-xl w-1/4 flex flex-col align-middle items-center max-xl:w-1/2">
-                <h2 class="text-center mb-3">Done</h2>
+                <h2 class="text-center mb-3 text-[30px]">Done</h2>
                 <div id="done">
 
                 </div>
@@ -79,7 +87,7 @@
         </div>
         <div class="fixed inset-0 flex justify-center items-center opacity-0 translate-y-full transition-all duration-500 ease-in-out"
             id="modal">
-            <div class="modal flex justify-center flex-col bg-white w-2/4  p-8 gap-5 rounded-lg">
+            <div class="modal flex justify-center flex-col bg-gradient-to-tl from-blue-500 to-red-500 w-2/4  p-8 gap-5 rounded-lg">
                 <input type="text" placeholder="Title" id="title"
                     class="border text-center h-8 text-black border-gray-400 rounded-md text-wrap">
                 <input type="text" placeholder="Description" id="description"
@@ -119,6 +127,30 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="flex justify-center mt-10 mb-10">
+        <button data-ripple-dark="true" data-popover-target="popover-with-subscription"
+            class="select-none rounded-lg bg-gray-900 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+            More Info
+        </button>
+        <div class="absolute z-[999] w-96 whitespace-normal break-words rounded-lg border border-blue-gray-50 bg-white p-4 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none"
+            aria-labelledby="label" aria-describedby="label" id="popover-with-subscription" role="dialog"
+            data-popover="popover-with-subscription">
+            <p class="block mb-1 font-sans text-sm antialiased font-normal leading-normal text-blue-gray-700">
+                GitHub:
+                <a href="https://github.com/Atig-Hamza" target="_blank"
+                    class="text-blue-600 hover:underline">Atig-Hamza</a>
+            </p>
+            <p class="block mb-1 font-sans text-sm antialiased font-normal leading-normal text-blue-gray-700">
+                Copyright  2022 TaskFlow All Right Reserved
+            </p>
+        </div>
+        <script type="module" src="node_modules/@material-tailwind/html@latest/scripts/popover.js"></script>
+
+        <!-- from cdn -->
+        <script type="module" src="https://unpkg.com/@material-tailwind/html@latest/scripts/popover.js"></script>
+
     </div>
     <script src="javascript/script.js"></script>
 </body>
