@@ -1,7 +1,10 @@
 let modal = document.querySelector("#modal");
 let blur = document.querySelector("#blur-1");
 let blur2 = document.querySelector("#blur-2");
-let blur3 = document.querySelector("#blur-3")
+let blur3 = document.querySelector("#blur-3");
+let blur4 = document.querySelector("#blur-4");
+let blur5 = document.querySelector("#blur-5");
+let blur6 = document.querySelector("#blur-6");
 const dateInput = document.querySelector("#date");
 const dateInput1 = document.querySelector("#date1");
 let multi = document.querySelector("#Multi");
@@ -15,6 +18,9 @@ function openModal() {
     blur.classList.add("blur-xl");
     blur2.classList.add("blur-xl");
     blur3.classList.add("blur-xl");
+    blur4.classList.add("blur-xl");
+    blur5.classList.add("blur-xl");
+    blur6.classList.add("blur-xl");
 
 
 }
@@ -25,6 +31,9 @@ function closeModal() {
     blur.classList.remove("blur-xl");
     blur2.classList.remove("blur-xl");
     blur3.classList.remove("blur-xl");
+    blur4.classList.remove("blur-xl");
+    blur5.classList.remove("blur-xl");
+    blur6.classList.remove("blur-xl");
 
     currentTask = null;
 }
@@ -132,6 +141,9 @@ function openMuli() {
     blur.classList.add("blur-xl");
     blur2.classList.add("blur-xl");
     blur3.classList.add("blur-xl");
+    blur4.classList.add("blur-xl");
+    blur5.classList.add("blur-xl");
+    blur6.classList.add("blur-xl");
 }
 
 function closeMulti() {
@@ -140,6 +152,9 @@ function closeMulti() {
     blur.classList.remove("blur-xl");
     blur2.classList.remove("blur-xl");
     blur3.classList.remove("blur-xl");
+    blur4.classList.remove("blur-xl");
+    blur5.classList.remove("blur-xl");
+    blur6.classList.remove("blur-xl");
 
     currentTask = null;
 }
