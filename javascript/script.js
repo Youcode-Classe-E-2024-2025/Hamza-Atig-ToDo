@@ -83,10 +83,10 @@ function addtask() {
         <p class="text-[6px] text-gray-300">${description}</p>
         <p class="text-xs text-gray-300">${date}</p>
         <div class="flex justify-center space-x-2 mt-2">
-            <button class="bg-purple-300 text-white rounded-md px-2" onclick="moveTask(this, 'left')">Move Left</button>
+            <button class="bg-purple-300 text-white rounded-md px-2" onclick="moveTask(this, 'left')">L</button>
             <button class="bg-red-600 text-white rounded-md px-4 py-1" onclick="deleteTask(this)">Delete</button>
             <button class="bg-blue-500 text-white rounded-md px-4 py-1" onclick="editTask(this)">Edit</button>
-            <button class="bg-purple-300 text-white rounded-md px-2" onclick="moveTask(this, 'right')">Move Right</button>
+            <button class="bg-purple-300 text-white rounded-md px-2" onclick="moveTask(this, 'right')">R</button>
         </div>
     `;
 
@@ -230,10 +230,10 @@ function addMulti() {
         <p class="text-[6px] text-gray-300 text-ellipsis">${description1}</p>
         <p class="text-xs text-gray-300">${date1}</p>
         <div class="flex justify-center space-x-2 mt-2">
-            <button class="bg-purple-300 text-white rounded-md px-2" onclick="moveTask(this, 'left')">Move Left</button>
+            <button class="bg-purple-300 text-white rounded-md px-2" onclick="moveTask(this, 'left')">L</button>
             <button class="bg-red-600 text-white rounded-md px-4 py-1" onclick="deleteTask(this)">Delete</button>
             <button class="bg-blue-500 text-white rounded-md px-4 py-1" onclick="editTask(this)">Edit</button>
-            <button class="bg-purple-300 text-white rounded-md px-2" onclick="moveTask(this, 'right')">Move Right</button>
+            <button class="bg-purple-300 text-white rounded-md px-2" onclick="moveTask(this, 'right')">R</button>
         </div>
     `;
 

@@ -1370,6 +1370,12 @@ video {
   }
 }
 
+@media not all and (min-width: 768px) {
+  .max-md\:w-3\/4 {
+    width: 75%;
+  }
+}
+
 @media not all and (min-width: 640px) {
   .max-sm\:flex-col {
     flex-direction: column;
@@ -1377,6 +1383,11 @@ video {
 
   .max-sm\:items-center {
     align-items: center;
+  }
+
+  .max-sm\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
   }
 }
 
