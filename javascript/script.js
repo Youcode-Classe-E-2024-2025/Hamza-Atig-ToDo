@@ -12,6 +12,7 @@ let currentTask = null;
 let totalTasks = 0;
 let DeleteTask = 0;
 
+
 function openModal() {
     modal.classList.remove("opacity-0", "translate-y-full");
     modal.classList.add("opacity-100", "translate-y-0");
@@ -39,69 +40,70 @@ function closeModal() {
 }
 
 function addtask() {
-    if (document.querySelector("#title").value == "") {
+    if (document.querySelector("#title").value === "") {
         alert("Please enter a title");
-    } else if (document.querySelector("#description").value == "") {
+        return;
+    }
+    if (document.querySelector("#description").value === "") {
         alert("Please enter a description");
-    } else if (!dateInput.value) {
+        return;
+    }
+    if (!dateInput.value) {
         alert("Please select a date.");
-    } else if (new Date(dateInput.value) <= new Date()) {
+        return;
+    }
+    if (new Date(dateInput.value) <= new Date()) {
         alert("Please enter a valid future date.");
-    } else if (document.querySelector("#Priority").value == "") {
+        return;
+    }
+    if (document.querySelector("#Priority").value === "") {
         alert("Please select a priority.");
+        return;
     }
 
-    else {
-        let title = document.querySelector("#title").value;
-        let description = document.querySelector("#description").value;
-        let date = document.querySelector("#date").value;
-        let priority = document.querySelector("#Priority").value;
+    let title = document.querySelector("#title").value;
+    let description = document.querySelector("#description").value;
+    let date = document.querySelector("#date").value;
+    let priority = document.querySelector("#Priority").value;
 
-        let task = document.createElement("div");
-        task.className = "task w-8/1 pr-4 pl- text-center font-bold rounded-md text-white p-4 mb-4 cursor-move";
-        task.setAttribute("draggable", "true");
-        
-        if (priority === "p1") {
-            task.classList.add("border", "bg-red-500");
-        } else if (priority === "p2") {
-            task.classList.add("border", "bg-yellow-500");
-        } else if (priority === "p3") {
-            task.classList.add("border", "bg-green-500");
-        }
+    let task = document.createElement("div");
+    task.className = "task w-8/1 pr-4 text-center font-bold rounded-md text-white p-4 mb-4 cursor-move";
+    task.setAttribute("draggable", "true");
 
-        task.innerHTML = `
-            <h2 class="text-[16px]">${title}</h2>
-            <p class="text-[6px] text-gray-300" maxlength="10">${description}</p>
-            <p class="text-xs text-gray-300">${date}</p>
-            <div class="flex justify-center space-x-2 mt-2">
-                <button class="bg-red-600 text-white rounded-md px-4 py-1" onclick="deleteTask(this)">Delete</button>
-                <button class="bg-blue-500 text-white rounded-md px-4 py-1" onclick="editTask(this)">Edit</button>
-            </div>
-        `;
-
-        totalTasks++;
-
-        task.addEventListener("dragstart", () => task.classList.add("opacity-50"));
-        task.addEventListener("dragend", () => task.classList.remove("opacity-50"));
-
-        if (currentTask) {
-            currentTask.replaceWith(task);
-        } else {
-            document.querySelector("#to-do").appendChild(task);
-        }
-
-        document.querySelector("#title").value = "";
-        document.querySelector("#description").value = "";
-        document.querySelector("#date").value = "";
-        document.querySelector("#Priority").value = "";
-
-
-        closeModal();
-        refresh();
-
-
+    if (priority === "p1") {
+        task.classList.add("border", "bg-red-500");
+    } else if (priority === "p2") {
+        task.classList.add("border", "bg-yellow-500");
+    } else if (priority === "p3") {
+        task.classList.add("border", "bg-green-500");
     }
+
+    task.innerHTML = `
+        <h2 class="text-[16px]">${title}</h2>
+        <p class="text-[6px] text-gray-300">${description}</p>
+        <p class="text-xs text-gray-300">${date}</p>
+        <div class="flex justify-center space-x-2 mt-2">
+            <button class="bg-purple-300 text-white rounded-md px-2" onclick="moveTask(this, 'left')">Move Left</button>
+            <button class="bg-red-600 text-white rounded-md px-4 py-1" onclick="deleteTask(this)">Delete</button>
+            <button class="bg-blue-500 text-white rounded-md px-4 py-1" onclick="editTask(this)">Edit</button>
+            <button class="bg-purple-300 text-white rounded-md px-2" onclick="moveTask(this, 'right')">Move Right</button>
+        </div>
+    `;
+
+    totalTasks++;
+    document.querySelector("#to-do").appendChild(task);
+
+    task.addEventListener("dragstart", () => task.classList.add("opacity-50"));
+    task.addEventListener("dragend", () => task.classList.remove("opacity-50"));
+
+    document.querySelector("#title").value = "";
+    document.querySelector("#description").value = "";
+    document.querySelector("#date").value = "";
+    document.querySelector("#Priority").value = "";
+    closeModal();
+    refresh();
 }
+
 
 const sections = document.querySelectorAll(".To-Do, .Doing, .Done");
 
@@ -133,6 +135,31 @@ function editTask(button) {
     openModal();
 }
 
+
+function moveTask(button, direction) {
+    const task = button.closest(".task");
+    const currentSection = task.parentElement;
+    let targetSection;
+
+    if (direction === 'left') {
+        if (currentSection.id === "doing") {
+            targetSection = document.getElementById("to-do");
+        } else if (currentSection.id === "done") {
+            targetSection = document.getElementById("doing");
+        }
+    } else if (direction === 'right') {
+        if (currentSection.id === "to-do") {
+            targetSection = document.getElementById("doing");
+        } else if (currentSection.id === "doing") {
+            targetSection = document.getElementById("done");
+        }
+    }
+
+    
+    if (targetSection) {
+        targetSection.appendChild(task);
+    }
+}
 
 
 function openMuli() {
@@ -169,69 +196,61 @@ function addMulti() {
         alert("Please enter a title");
         return;
     }
-
     if (!description1) {
         alert("Please enter a description");
         return;
     }
-
     if (!date1) {
         alert("Please select a date.");
         return;
     }
-
     if (new Date(date1) <= new Date()) {
         alert("Please enter a valid future date.");
         return;
     }
-
     if (!priority1) {
         alert("Please select a priority.");
+        return;
     }
 
-    else {
-        const task1 = document.createElement("div");
-        task1.className = "task w-8/1 text-center font-bold rounded-md text-white p-4 mb-4 cursor-move";
-        task1.setAttribute("draggable", "true");
+    const task1 = document.createElement("div");
+    task1.className = "task w-8/1 text-center font-bold rounded-md text-white p-4 mb-4 cursor-move";
+    task1.setAttribute("draggable", "true");
 
-        if (priority1 === "p1") {
-            task1.classList.add("border", "bg-red-500");
-        } else if (priority1 === "p2") {
-            task1.classList.add("border", "bg-yellow-500");
-        } else if (priority1 === "p3") {
-            task1.classList.add("border", "bg-green-500");
-        }
-
-        task1.innerHTML = `
-            <h2 class="text-[16px] text-ellipsis">${title1}</h2>
-            <p class="text-[6px] text-gray-300 text-ellipsis" maxlength="10">${description1}</p>
-            <p class="text-xs text-gray-300">${date1}</p>
-            <div class="flex justify-center space-x-2 mt-2">
-                <button class="bg-red-600 text-white rounded-md px-4 py-1" onclick="deleteTask(this)">Delete</button>
-                <button class="bg-blue-500 text-white rounded-md px-4 py-1" onclick="editTask(this)">Edit</button>
-            </div>
-        `;
-        task1.addEventListener("dragstart", () => task1.classList.add("opacity-50"));
-        task1.addEventListener("dragend", () => task1.classList.remove("opacity-50"));
-
-        totalTasks++;
-
-        if (currentTask) {
-            currentTask.replaceWith(task1);
-        } else {
-            document.querySelector("#to-do").appendChild(task1);
-        }
-        document.querySelector("#title1").value = "";
-        document.querySelector("#description1").value = "";
-        document.querySelector("#date1").value = "";
-        document.querySelector("#Priority1").value = "";
-
-
-
-        refresh();
-
+    if (priority1 === "p1") {
+        task1.classList.add("border", "bg-red-500");
+    } else if (priority1 === "p2") {
+        task1.classList.add("border", "bg-yellow-500");
+    } else if (priority1 === "p3") {
+        task1.classList.add("border", "bg-green-500");
     }
+
+    task1.innerHTML = `
+        <h2 class="text-[16px] text-ellipsis">${title1}</h2>
+        <p class="text-[6px] text-gray-300 text-ellipsis">${description1}</p>
+        <p class="text-xs text-gray-300">${date1}</p>
+        <div class="flex justify-center space-x-2 mt-2">
+            <button class="bg-purple-300 text-white rounded-md px-2" onclick="moveTask(this, 'left')">Move Left</button>
+            <button class="bg-red-600 text-white rounded-md px-4 py-1" onclick="deleteTask(this)">Delete</button>
+            <button class="bg-blue-500 text-white rounded-md px-4 py-1" onclick="editTask(this)">Edit</button>
+            <button class="bg-purple-300 text-white rounded-md px-2" onclick="moveTask(this, 'right')">Move Right</button>
+        </div>
+    `;
+
+    totalTasks++;
+
+    task1.addEventListener("dragstart", () => task.classList.add("opacity-50"));
+    task1.addEventListener("dragend", () => task.classList.remove("opacity-50"));
+
+    document.querySelector("#to-do").appendChild(task1);
+
+    document.querySelector("#title1").value = "";
+    document.querySelector("#description1").value = "";
+    document.querySelector("#date1").value = "";
+    document.querySelector("#Priority1").value = "";
+    refresh();
 }
+
 
 
 function searchTasks() {
@@ -289,50 +308,7 @@ function sortTasks() {
 }
 
 
-// test data
 
-document.addEventListener("DOMContentLoaded", () => {
-    const sampleTasks = [
-        { title: "Complete Project Proposal", description: "Finish the first draft of the project proposal.", date: "2024-11-15T10:00", priority: "p1" },
-        { title: "Weekly Team Meeting", description: "Prepare slides and reports for the team meeting.", date: "2024-11-10T09:00", priority: "p2" },
-        { title: "Grocery Shopping", description: "Buy ingredients for the weekend barbecue.", date: "2024-11-05T16:00", priority: "p3" },
-        { title: "Code Review", description: "Review recent pull requests and provide feedback.", date: "2024-11-07T14:00", priority: "p1" },
-        { title: "Book Dentist Appointment", description: "Schedule a cleaning appointment.", date: "2024-11-20T12:00", priority: "p2" },
-        { title: "Plan Birthday Party", description: "Organize activities, send invitations, and arrange catering.", date: "2024-11-25T18:00", priority: "p3" }
-    ];
-
-    sampleTasks.forEach(taskData => {
-        let task = document.createElement("div");
-        task.className = "task w-8/1 text-center font-bold rounded-md text-white p-4 mb-4 cursor-move";
-        task.setAttribute("draggable", "true");
-
-        if (taskData.priority === "p1") {
-            task.classList.add("border", "bg-red-500");
-        } else if (taskData.priority === "p2") {
-            task.classList.add("border", "bg-yellow-500");
-        } else if (taskData.priority === "p3") {
-            task.classList.add("border", "bg-green-500");
-        }
-
-        task.innerHTML = `
-            <h2 class="text-[16px] text-ellipsis">${taskData.title}</h2>
-            <p class="text-[6px] text-gray-300 text-ellipsis">${taskData.description}</p>
-            <p class="text-xs text-gray-300">${taskData.date}</p>
-            <div class="flex justify-center space-x-2 mt-2">
-                <button class="bg-red-600 text-white rounded-md px-4 py-1" onclick="deleteTask(this)">Delete</button>
-                <button class="bg-blue-500 text-white rounded-md px-4 py-1" onclick="editTask(this)">Edit</button>
-            </div>
-        `;
-
-        totalTasks++;
-
-
-        task.addEventListener("dragstart", () => task.classList.add("opacity-50"));
-        task.addEventListener("dragend", () => task.classList.remove("opacity-50"));
-
-        document.querySelector("#to-do").appendChild(task);
-    });
-});
 
 
 function refresh() {

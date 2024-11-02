@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/output.css">
     <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>TaskFlow</title>
+    <link rel="shortcut icon" href="img/favicon-32x32.png" type="image/x-icon">
 </head>
 
 <body class="bg-white">
@@ -87,7 +88,7 @@
                 </div>
             </div>
         </div>
-        <div class="fixed inset-0 flex justify-center items-center opacity-0 translate-y-full transition-all duration-500 ease-in-out"
+        <div class="fixed inset-0 flex justify-center items-center opacity-0 translate-y-full transition-all duration-500 ease-in-out z-10"
             id="modal">
             <div class="modal flex justify-center flex-col bg-gradient-to-tl from-blue-500 to-red-500 w-2/4  p-8 gap-5 rounded-lg">
                 <input type="text" placeholder="Title" id="title"
@@ -108,7 +109,7 @@
                 </div>
             </div>
         </div>
-        <div class="fixed inset-0 flex justify-center items-center opacity-0 translate-y-full transition-all duration-500 ease-in-out"
+        <div class="fixed inset-0 flex justify-center items-center opacity-0 translate-y-full transition-all duration-500 ease-in-out z-10"
             id="Multi">
             <div class="modal flex justify-center flex-col bg-white w-2/4  p-8 gap-5 rounded-lg">
                 <input type="text" placeholder="Title" id="title1"
@@ -131,7 +132,7 @@
         </div>
     </div>
 
-    <div class="flex justify-center mt-10 mb-10 relative" id="blur-6">
+    <div class="flex justify-center mt-10 mb-10 relative z-0" id="blur-6">
         <button id="info-button"
             class="select-none rounded-lg bg-gray-900 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
             More Info
