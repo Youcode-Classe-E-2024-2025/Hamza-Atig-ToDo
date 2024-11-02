@@ -7,7 +7,7 @@ const dateInput1 = document.querySelector("#date1");
 let multi = document.querySelector("#Multi");
 let currentTask = null;
 let totalTasks = 0;
-
+let DeleteTask = 0;
 
 function openModal() {
     modal.classList.remove("opacity-0", "translate-y-full");
@@ -16,7 +16,7 @@ function openModal() {
     blur2.classList.add("blur-xl");
     blur3.classList.add("blur-xl");
 
-    
+
 }
 
 function closeModal() {
@@ -65,13 +65,12 @@ function addtask() {
             <p class="text-[6px] text-gray-300" maxlength="10">${description}</p>
             <p class="text-xs text-gray-300">${date}</p>
             <div class="flex justify-center space-x-2 mt-2">
-                <button class="bg-red-600 text-white rounded-md px-4 py-1" onclick="this.parentElement.parentElement.remove()">Delete</button>
+                <button class="bg-red-600 text-white rounded-md px-4 py-1" onclick="deleteTask(this)">Delete</button>
                 <button class="bg-blue-500 text-white rounded-md px-4 py-1" onclick="editTask(this)">Edit</button>
             </div>
         `;
 
         totalTasks++;
-        console.log(totalTasks);
 
         task.addEventListener("dragstart", () => task.classList.add("opacity-50"));
         task.addEventListener("dragend", () => task.classList.remove("opacity-50"));
@@ -87,11 +86,9 @@ function addtask() {
         document.querySelector("#date").value = "";
         document.querySelector("#Priority").value = "";
 
-        document.getElementById("totalTasks").innerHTML = `
-            <p class="text-center text-black text-[16px] font-bold">Total Tasks: <span class="text-[20px]" id="totalTasksNumber">${totalTasks}</span></p>
-        `;
 
         closeModal();
+        refresh();
 
 
     }
@@ -122,6 +119,8 @@ function editTask(button) {
     document.querySelector("#Priority").value = currentTask.classList.contains("bg-red-500") ? "p1" :
         currentTask.classList.contains("bg-yellow-500") ? "p2" : "p3";
 
+    
+    DeleteTask++;
     openModal();
 }
 
@@ -189,11 +188,11 @@ function addMulti() {
         }
 
         task1.innerHTML = `
-            <h2 class="text-[16px]">${title1}</h2>
-            <p class="text-[6px] text-gray-300" maxlength="10">${description1}</p>
+            <h2 class="text-[16px] text-ellipsis">${title1}</h2>
+            <p class="text-[6px] text-gray-300 text-ellipsis" maxlength="10">${description1}</p>
             <p class="text-xs text-gray-300">${date1}</p>
             <div class="flex justify-center space-x-2 mt-2">
-                <button class="bg-red-600 text-white rounded-md px-4 py-1" onclick="this.parentElement.parentElement.remove()">Delete</button>
+                <button class="bg-red-600 text-white rounded-md px-4 py-1" onclick="deleteTask(this)">Delete</button>
                 <button class="bg-blue-500 text-white rounded-md px-4 py-1" onclick="editTask(this)">Edit</button>
             </div>
         `;
@@ -201,7 +200,6 @@ function addMulti() {
         task1.addEventListener("dragend", () => task1.classList.remove("opacity-50"));
 
         totalTasks++;
-        console.log(totalTasks);
 
         if (currentTask) {
             currentTask.replaceWith(task1);
@@ -214,12 +212,9 @@ function addMulti() {
         document.querySelector("#Priority1").value = "";
 
 
-        document.getElementById("totalTasks").innerHTML = `
-            <p class="text-center text-black text-[16px] font-bold">Total Tasks: <span class="text-[20px]" id="totalTasksNumber">${totalTasks}</span></p>
-        `;
 
-        
-        
+        refresh();
+
     }
 }
 
@@ -305,20 +300,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         task.innerHTML = `
-            <h2 class="text-[16px]">${taskData.title}</h2>
-            <p class="text-[6px] text-gray-300">${taskData.description}</p>
+            <h2 class="text-[16px] text-ellipsis">${taskData.title}</h2>
+            <p class="text-[6px] text-gray-300 text-ellipsis">${taskData.description}</p>
             <p class="text-xs text-gray-300">${taskData.date}</p>
             <div class="flex justify-center space-x-2 mt-2">
-                <button class="bg-red-600 text-white rounded-md px-4 py-1" onclick="this.parentElement.parentElement.remove()">Delete</button>
+                <button class="bg-red-600 text-white rounded-md px-4 py-1" onclick="deleteTask(this)">Delete</button>
                 <button class="bg-blue-500 text-white rounded-md px-4 py-1" onclick="editTask(this)">Edit</button>
             </div>
         `;
 
         totalTasks++;
 
-        document.getElementById("totalTasks").innerHTML = `
-            <p class="text-center text-black text-[16px] font-bold">Total Tasks: <span class="text-[20px]" id="totalTasksNumber">${totalTasks}</span></p>
-        `;
 
         task.addEventListener("dragstart", () => task.classList.add("opacity-50"));
         task.addEventListener("dragend", () => task.classList.remove("opacity-50"));
@@ -326,3 +318,19 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector("#to-do").appendChild(task);
     });
 });
+
+
+function refresh() {
+    document.getElementById("totalTasks").innerHTML = `
+        <p class="text-center text-black text-[16px] font-bold mt-3">
+            Total Tasks: <span class="text-[20px]" id="totalTasksNumber">${totalTasks - DeleteTask}</span>
+        </p>
+    `;
+}
+
+
+function deleteTask(button) {
+    button.parentElement.parentElement.remove();
+    DeleteTask++;
+    refresh();
+}
