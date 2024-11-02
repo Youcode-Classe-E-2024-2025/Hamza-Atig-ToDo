@@ -239,8 +239,8 @@ function addMulti() {
 
     totalTasks++;
 
-    task1.addEventListener("dragstart", () => task.classList.add("opacity-50"));
-    task1.addEventListener("dragend", () => task.classList.remove("opacity-50"));
+    task1.addEventListener("dragstart", () => task1.classList.add("opacity-50"));
+    task1.addEventListener("dragend", () => task1.classList.remove("opacity-50"));
 
     document.querySelector("#to-do").appendChild(task1);
 
