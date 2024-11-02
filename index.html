@@ -8,9 +8,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>TaskFlow</title>
     <link rel="shortcut icon" href="img/favicon-32x32.png" type="image/x-icon">
+    <style>
+        .custom-cursor {
+            cursor: url('img/cursor.png'), auto;
+        }
+        .custom-cursor1 {
+            cursor: url('img/move.png'), auto;
+        }
+        .custom-cursor2 {
+            cursor: url('img/left.png'), auto;
+        }
+    </style>
 </head>
 
-<body class="bg-white">
+<body class="bg-white custom-cursor">
     <div id="blur-3" class="w-full flex justify-center mt-11">
         <h1 class="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent text-8xl font-jura max-sm:text-5xl">
             TaskFlow</h1>
@@ -20,13 +31,13 @@
             <div id="add-multi"
                 class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-black focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
                 <button
-                    class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-white rounded-md group-hover:bg-opacity-0"
+                    class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-white rounded-md group-hover:bg-opacity-0 custom-cursor2"
                     onclick="openMuli()">+ Add Multi</button>
             </div>
             <div class="flex rounded-md border-2 border-blue-500 overflow-hidden font-jura mb-2">
                 <input type="search" placeholder="Search Something..."
                     class="w-full outline-none bg-white text-gray-600 text-sm px-4 py-3" id="searchInput" />
-                <button type='button' class="flex items-center justify-center bg-[#007bff] px-5" id="searchButton"
+                <button type='button' class="flex items-center justify-center bg-[#007bff] px-5 custom-cursor2" id="searchButton"
                     onclick="searchTasks()">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192.904 192.904" width="16px"
                         class="fill-white">
@@ -39,7 +50,7 @@
             <div id="add"
                 class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-black focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
                 <button
-                    class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-white rounded-md group-hover:bg-opacity-0"
+                    class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-white rounded-md group-hover:bg-opacity-0 custom-cursor2"
                     onclick="openModal()">+ Add One</button>
             </div>
         </div>
@@ -50,7 +61,7 @@
         </div>
         <form class="max-w-sm mx-auto mt-9" id="blur-5">
             <select id="sort"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 custom-cursor2">
                 <option selected>Default Sort</option>
                 <option value="Date">Date Ascending</option>
                 <option value="Datereverse">Date Descending</option>
@@ -104,8 +115,8 @@
                     <option value="p3">P3</option>
                 </select>
                 <div class="flex flex-row gap-3">
-                    <button class="bg-blue-500 text-white rounded-md h-8 w-1/2" onclick="addtask()">Add</button>
-                    <button class="bg-red-500 text-white rounded-md h-8 w-1/2" onclick="closeModal()">close</button>
+                    <button class="bg-blue-500 text-white rounded-md h-8 w-1/2 custom-cursor2" onclick="addtask()">Add</button>
+                    <button class="bg-red-500 text-white rounded-md h-8 w-1/2 custom-cursor2" onclick="closeModal()">close</button>
                 </div>
             </div>
         </div>
@@ -134,7 +145,7 @@
 
     <div class="flex justify-center mt-10 mb-10 relative z-0" id="blur-6">
         <button id="info-button"
-            class="select-none rounded-lg bg-gray-900 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+            class="select-none rounded-lg bg-gray-900 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none custom-cursor2">
             More Info
         </button>
         <div class="absolute z-[999] w-96 whitespace-normal break-words rounded-lg border border-blue-gray-50 bg-white p-4 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 transform translate-y-full opacity-0 transition-all duration-300 ease-in-out"
